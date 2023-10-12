@@ -60,6 +60,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
 	return {
 		mode,
 		entry: paths.entry,
+		cache: !isDev,
 		output: {
 			filename: "[name][contenthash].js",
 			path: paths.build,
@@ -164,6 +165,7 @@ export function buildResolve({ paths }: BuildOptions): webpack.ResolveOptions {
 export function buildDevServer({ port }: BuildOptions): DevServerConfiguration {
 	return {
 		open: true,
+		hot: true,
 		port,
 		historyApiFallback: true,
 	};
